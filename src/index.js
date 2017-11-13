@@ -16,7 +16,7 @@ const playAnimTiming = {
   iterations: 1,
 };
 
-const keys = 'qwertyuiopasdfghjklzxcvbnm';
+const keys = 'qwertyuiopasdfghjklzxcvbnm1234567890';
 
 
 function basename(p) {
@@ -90,7 +90,7 @@ const view = () => m('main', [
         },
         [
           m('span', sample.name),
-          m('kbd', keys[index].toUpperCase()),
+          m('kbd', (keys[index] || '').toUpperCase()),
         ],
       ))
     )
