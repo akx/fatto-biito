@@ -1,27 +1,154 @@
+@keyframes flash {
+  from, 50%, to {
+    opacity: 1;
+  }
+
+  25%, 75% {
+    opacity: 0;
+  }
+}
+
+
 body {
 	margin: 0;
+	display: flex;
+	align-content: center;
+	align-items: center;
+	height: 100%;
+	background: firebrick url(./keith-misner-308.jpg);
+	background-size: cover;
 }
 
 * {
 	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Helvetica Neue", sans-serif;
+	box-sizing: border-box;
 }
 
-button {
-	width: 10vw;
-	height: 10vw;
-	margin: 1vw;
-	border: 2px solid dodgerblue;
-	border-radius: 0 0 25% 0;
-	background: aliceblue;
+#pad {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	min-height: 500px;
+	padding: 1em;
+}
+
+.button-ctr {
+	width: 150px;
+	height: 120px;
+	margin: 1em;
+	border: none;
+	border-radius: 4px;
 	outline: none;
+	display: flex;
+	flex-direction: column;
 }
 
-button:focus, button.last-played {
-	border-color: crimson;
+@keyframes press {
+	0% {
+		transform: translateY(8px);
+		box-shadow: 0px 0px 5px 5px rgba(255, 160, 0, 0.5);
+		background: rgb(255, 160, 0);
+	}
+	100% {
+		transform: translateY(0);
+	}
+}
+
+.button-ctr.pressed button {
+	animation: 0.5s press;
+}
+
+.button-ctr button {
+	flex: 1;
+	display: block;
+	background: none;
+	border: none;
+	outline: none;
+	background: #ababab;
+	border-radius: 6px 6px 0 0;
+	border-bottom: 1px solid #a3a3a3;
+	font-size: 13pt;
+}
+
+.button-ctr .button-3d {
+	background: #8d8d8d;
+	font-size: 1pt;
+	height: 10px;
+	border-radius: 0 0 6px 6px;
 }
 
 kbd {
 	display: block;
 	margin: 1em;
 	font-weight: bold;
+}
+
+main {
+	width: 900px;
+	margin: auto;
+	margin-top: 1em;
+	background: linear-gradient(to top, #e6e7cb 0%, #bfc0a7 100%);
+	box-shadow: 0 1px 5px 2px rgba(0, 0, 0, 0.2);
+	border-radius: 5px;
+}
+
+#disp {
+	padding: 1em;
+	border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+	position: relative;
+}
+
+#sticker {
+	position: absolute;
+	top: -3px;
+	left: -3px;
+	width: 125px;
+
+}
+
+#drive {
+	padding: 1em;
+	background: rgba(0, 0, 0, 0.1);
+	border-top: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+#drive-wrap {
+	background: linear-gradient(to bottom, rgba(0,0,0,0.6) 0%,rgba(0,0,0,0.2) 100%);
+	box-shadow: 0 0px 5px 2px rgba(0, 0, 0, 0.2);
+	border-radius: 0.2vw 0.2vw 0.5vw 0.5vw;
+	position: relative;
+}
+
+#drive-wrap span {
+	position: absolute;
+	display: block;
+	width: 100%;
+	font-size: 20px;
+	letter-spacing: 2.5px;
+	color: #fff;
+	text-align: center;
+	pointer-events: none;
+	user-select: none;
+	animation-name: flash;
+	animation-duration: 2s;
+	animation-direction: alternate;
+	animation-iteration-count: infinite;
+}
+
+#drive-wrap input {
+	padding: 1px;
+	display: block;
+	width: 100%;
+	opacity: 0;
+	cursor: pointer;
+}
+
+#disp canvas {
+	background: #82e681;
+	width: 60%;
+	margin: auto;
+	display: block;
+	image-rendering: pixelated;
+	box-shadow: inset 0px 5px 15px -2px rgba(0, 0, 0, .3);
+	border-radius: 10px;
 }
